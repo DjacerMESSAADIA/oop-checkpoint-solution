@@ -3,9 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>PC Parts Shop | OOP</title>
   </head>
-  <body>
+  <body class="bg-gray-100 h-screen flex-col lg:flex-row flex">
+    <!-- Begin Main -->
+    <main class="w-full flex flex-col lg:flex-row p-4">
+      <div class="flex flex-col w-full lg:w-1/2">
+        <div class="flex flex-col justify-center mb-4">
+          <!-- Left section for logo and title -->
+          <img
+            src="public/images/techbit-logo.png"
+            alt="Logo"
+            class="h-9 w-40 mr-4"
+          />
+        </div>
+        <div class="flex-1 flex items-center justify-center mb-8">
+          <img
+            src="public/images/shop-black-friday.png"
+            alt="black friday image"
+            class="w-full h-auto max-w-md"
+          />
+        </div>
+      </div>
+      <div
+        class="bg-white shadow-lg rounded-lg p-6 w-full lg:w-1/2 flex flex-col justify-between h-full"
+      >
+        <!-- Shopping Cart Items -->
+        <div class="flex flex-col cart-items-container overflow-y-auto flex-1">
+          <!-- Cart items will be dynamically inserted here -->
+        </div>
+        <div id="empty-cart" class="flex flex-col items-center justify-center text-center hidden">
+          <img class="object-cover size-56" src="public/images/empty-cart.svg" alt="empty-cart" />
+          <div>
+            <h2 class="font-bold uppercase text-xl">No items in cart!</h2>
+            <a href="#" class="capitalize font-bold text-xl hover:underline text-red-600">Go back</a>
+          </div>
+        </div>
+        <!-- Total Price -->
+        <div class="flex justify-between items-center mt-4">
+          <h2 class="text-xl font-semibold">Total Price:</h2>
+          <p id="total-price" class="font-bold text-gray-600">$0.00</p>
+        </div>
+        <!-- Checkout Button -->
+        <div class="mt-4">
+          <button
+            class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-500"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+    </main>
+    <!-- End Main -->
+    <!-- Begin Scripts -->
+    <script
+      src="https://kit.fontawesome.com/985cabe830.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="main.js"></script>
+    <!-- End Scripts -->
   </body>
 </html>
