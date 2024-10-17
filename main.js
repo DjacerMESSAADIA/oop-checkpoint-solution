@@ -3,7 +3,7 @@ class Product {
     this.id = id;
     this.name = name;
     this.price = price;
-    this.image = image; 
+    this.image = image;
   }
 }
 
@@ -50,7 +50,9 @@ class ShoppingCart {
   }
 
   addItem(product, quantity) {
-    const existingItem = this.items.find(item => item.product.id === product.id);
+    const existingItem = this.items.find(
+      (item) => item.product.id === product.id
+    );
     if (existingItem) {
       existingItem.quantity += quantity;
     } else {
@@ -63,7 +65,7 @@ class ShoppingCart {
   decreaseQuantity(button) {
     const itemContainer = button.closest(".cart-item");
     const productId = parseInt(itemContainer.dataset.id);
-    const item = this.items.find(item => item.product.id === productId);
+    const item = this.items.find((item) => item.product.id === productId);
     if (item && item.quantity > 1) {
       item.quantity--;
       this.updateCartDisplay();
@@ -73,7 +75,7 @@ class ShoppingCart {
   increaseQuantity(button) {
     const itemContainer = button.closest(".cart-item");
     const productId = parseInt(itemContainer.dataset.id);
-    const item = this.items.find(item => item.product.id === productId);
+    const item = this.items.find((item) => item.product.id === productId);
     if (item) {
       item.quantity++;
       this.updateCartDisplay();
@@ -83,7 +85,7 @@ class ShoppingCart {
   deleteItem(button) {
     const itemContainer = button.closest(".cart-item");
     const productId = parseInt(itemContainer.dataset.id);
-    this.items = this.items.filter(item => item.product.id !== productId);
+    this.items = this.items.filter((item) => item.product.id !== productId);
     this.updateCartDisplay();
   }
 
@@ -98,8 +100,8 @@ class ShoppingCart {
   }
 
   updateCartDisplay() {
-    const cartItemsContainer = document.querySelector(".cart-items-container"); 
-    cartItemsContainer.innerHTML = ''; // Clear existing items
+    const cartItemsContainer = document.querySelector(".cart-items-container");
+    cartItemsContainer.innerHTML = ""; // Clear existing items
 
     if (this.items.length === 0) {
       // Show empty cart message
@@ -110,12 +112,15 @@ class ShoppingCart {
       this.emptyCart.classList.remove("flex");
       this.emptyCart.classList.add("hidden");
 
-      this.items.forEach(item => {
-        const itemElement = document.createElement('div');
-        itemElement.className = "cart-item flex md:flex-row flex-col justify-between items-center border-b border-gray-300 pb-4 pr-4 mb-4";
+      this.items.forEach((item) => {
+        const itemElement = document.createElement("div");
+        itemElement.className =
+          "cart-item flex md:flex-row flex-col justify-between items-center border-b border-gray-300 pb-4 pr-4 mb-4";
         itemElement.dataset.id = item.product.id;
         itemElement.innerHTML = `
-          <img src="${item.product.image}" alt="${item.product.name}" class="w-24 h-24 object-cover rounded" />
+          <img src="${item.product.image}" alt="${
+          item.product.name
+        }" class="w-24 h-24 object-cover rounded" />
           <div class="flex-1 mx-4">
             <h2 class="text-xl font-semibold">${item.product.name}</h2>
             <p class="text-gray-600">$${item.product.price.toFixed(2)}</p>
@@ -124,7 +129,9 @@ class ShoppingCart {
             <button class="bg-gray-200 decrease-quantity text-gray-700 p-2 rounded-full mr-2" title="Decrease Quantity">
               <i class="fas fa-minus"></i>
             </button>
-            <input type="number" value="${item.quantity}" class="w-12 text-center border border-gray-300 bg-gray-100 text-gray-700 rounded" readonly />
+            <input type="number" value="${
+              item.quantity
+            }" class="w-12 text-center border border-gray-300 bg-gray-100 text-gray-700 rounded" readonly />
             <button class="bg-gray-200 increase-quantity text-gray-700 p-2 rounded-full ml-2" title="Increase Quantity">
               <i class="fas fa-plus"></i>
             </button>
@@ -149,14 +156,33 @@ class ShoppingCart {
 document.addEventListener("DOMContentLoaded", () => {
   const cart = new ShoppingCart();
 
-  // Create products with images and add them to the cart 
-  const product1 = new Product(1, "Graphics Card", 499.99, "public/images/gpu.jpg");
-  const product2 = new Product(2, "Motherboard", 199.99, "public/images/motherboard.jpg");
+  // Create products with images and add them to the cart
+  const product1 = new Product(
+    1,
+    "Graphics Card",
+    499.99,
+    "public/images/gpu.jpg"
+  );
+  const product2 = new Product(
+    2,
+    "Motherboard",
+    199.99,
+    "public/images/motherboard.jpg"
+  );
   const product3 = new Product(3, "CPU", 299.99, "public/images/cpu.jpg");
-  const product4 = new Product(4, "Power Supply", 89.99, "public/images/powersupply.jpg");
+  const product4 = new Product(
+    4,
+    "Power Supply",
+    89.99,
+    "public/images/powersupply.jpg"
+  );
   const product5 = new Product(5, "SSD", 129.99, "public/images/ssd.jpg");
-  const product6 = new Product(6, "Keyboard", 59.99, "public/images/keyboard.jpg");
-
+  const product6 = new Product(
+    6,
+    "Keyboard",
+    59.99,
+    "public/images/keyboard.jpg"
+  );
 
   // Add products to the cart
   cart.addItem(product1, 1);
